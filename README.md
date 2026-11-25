@@ -1,72 +1,54 @@
 # SAG Visual Consistency Engine
 
-A provider-neutral toolkit for keeping characters, palettes, art direction, environments, and scene continuity organized across ChatGPT and Google Gemini image workflows.
+A local-first visual bible and image-generation workspace for keeping recurring characters, environments, palettes, and scene continuity organized across Gemini and OpenAI image generation.
 
-## What this first version does
+## Local visual library + direct image generation
 
-- Stores a reusable visual bible in JSON and Markdown.
-- Builds scene prompts from approved character and style references.
-- Checks scene manifests for missing or conflicting visual rules.
-- Keeps provider integrations modular: this repository does not assume that connecting GitHub automatically grants image-generation access.
-- Keeps API keys out of source control.
+The browser app is in `app/`. It adds persistent character and background references using browser IndexedDB, multiple images per asset, automatic reference retrieval, scene prompt compilation, Gemini image generation, OpenAI reference-guided image generation, and local generation history.
 
-## Quick start
+### Run on Windows
 
-Requires Python 3.10+.
+Requires Python 3.10+; no extra packages are needed.
+
+1. Download or clone this repository.
+2. Double-click `run-local.bat`, or open a terminal in the project folder and run `python server.py`.
+3. Open `http://127.0.0.1:8765/app/`.
+4. In **API settings**, add your Gemini or OpenAI API key.
+5. In **Visual library**, save character and background references.
+6. In **Generate image**, select their names, describe the scene, and generate.
+
+Keep the terminal running. Press Ctrl+C to stop.
+
+### API keys and billing
+
+This uses provider API keys, not a ChatGPT or Gemini consumer subscription. API usage is billed separately. Create keys at https://aistudio.google.com/app/apikey and https://platform.openai.com/api-keys.
+
+Keys stay in browser session memory and are forwarded through a loopback-only Python server. The server does not persist keys or reference images. Do not expose it to the public internet or use it on a shared computer.
+
+### Local storage
+
+Characters, environments, reference images, and saved generations live in this browser's IndexedDB. They do not sync to other devices. Clearing browser site data can erase them. Keep original images backed up privately. Never commit private artwork or API keys to this public repository.
+
+### Provider notes
+
+- Gemini requests attach the selected approved references as inline image data. This app currently allows up to 3 reference images per Gemini request.
+- OpenAI uses the Images edits API with the selected references. It is API image generation, not the ChatGPT website UI.
+- Models, image limits, pricing, and account access can change. Check current provider docs.
+- Reference images improve consistency but cannot guarantee identical pixels or perfect identity. Review outputs before approving.
+
+## Existing Python CLI
+
+The original provider-neutral visual bible and prompt CLI remain available:
 
 ```bash
 python -m venv .venv
-# Windows:
-.venv\Scripts\activate
-# macOS/Linux:
-source .venv/bin/activate
+.venv\\Scripts\\activate
 pip install -e .
-```
-
-Create a visual bible from the example:
-
-```bash
 sag-vce init --output visual-bible.json
-```
-
-Validate it:
-
-```bash
 sag-vce validate visual-bible.json
-```
-
-Build a prompt for a scene manifest:
-
-```bash
 sag-vce prompt examples/scene-001.json --bible visual-bible.json
 ```
 
-## Suggested workflow
+## Privacy
 
-1. Create one approved character record per recurring character.
-2. Add reference image paths and describe immutable identity traits.
-3. Define the master art direction and exact palette.
-4. Describe recurring locations in the environment library.
-5. Write each scene as a small JSON manifest that references character and location IDs.
-6. Generate images in ChatGPT or Gemini using the resulting prompt and attach the relevant reference images in that platform.
-7. Review the output, approve it, and update the bible only deliberately.
-
-## Important limitation
-
-Text prompts and metadata alone cannot guarantee identical pixels or perfect character identity. Stronger consistency comes from supplying the same approved reference images to the image model, using its supported reference/image-editing controls, and reviewing results. Model capabilities and API availability differ by provider and may change.
-
-## Provider strategy
-
-- **ChatGPT:** use the prompt and reference bundle in ChatGPT image generation. A future API adapter can be added when the chosen OpenAI image endpoint and account access are confirmed.
-- **Gemini:** use the same prompt and reference bundle with a Gemini image-capable model. A future adapter can be added using the currently supported Google API.
-- The core visual bible and prompt builder remain provider-neutral.
-
-## Privacy and safety
-
-- Never commit API keys, private photos, unpublished reference art, or confidential scripts to a public repository.
-- Store secrets in local environment variables or a secret manager.
-- If this repository is public, keep only generic templates and code here; store private project assets elsewhere or change repository visibility before uploading them.
-
-## Project status
-
-Initial scaffold. Provider API calls, image similarity scoring, a web dashboard, and automated reference-image packaging are planned follow-up milestones.
+Never commit API keys, private photos, unpublished reference art, or confidential scripts. Keep local assets in browser storage or a private backup. The public repository should contain generic templates and application code only.
