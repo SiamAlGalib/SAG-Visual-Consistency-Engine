@@ -122,7 +122,7 @@ if __name__ == "__main__":
     server = ThreadingHTTPServer(("127.0.0.1", port), Handler)
     print(f"SAG VCE running at http://127.0.0.1:{port}/")
     print("Local only. Keep this terminal open. Press Ctrl+C to stop.")
-    Timer(1, lambda: webbrowser.open(f"http://127.0.0.1:{port}/app/")).start()
+    Timer(1, lambda: webbrowser.open(f"http://127.0.0.1:{port}/")).start()
     try: server.serve_forever()
     except KeyboardInterrupt: print("\nStopping SAG VCE.")
     finally: server.server_close()
