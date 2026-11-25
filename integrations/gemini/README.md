@@ -1,9 +1,11 @@
-# Using SAG VCE with Google Gemini
+# Google Gemini image generation
 
-1. Open the project visual bible and the scene JSON.
-2. Run the prompt builder, or ask Gemini to follow `AGENTS.md` and use the visual bible as the source of truth.
-3. Upload the approved character and environment reference images to the Gemini image-generation conversation when supported.
-4. Paste the generated scene prompt and request the scene.
-5. Compare the output with the approved references before accepting it.
+The local web app creates a fresh request for each scene and attaches selected approved character and environment images as inline image parts. The app, rather than Gemini chat memory, is the persistent source of truth.
 
-**Important:** Repository access does not automatically attach image files to a Gemini image-generation request. Upload the actual reference images in Gemini. Model names, reference-image limits, and API capabilities can change, so check Google's current Gemini documentation before implementing API automation.
+- Default model: `gemini-3.1-flash-image`
+- Alternate: `gemini-2.5-flash-image`
+- App limit: 3 references per request.
+- Uses the Gemini Developer API `generateContent` endpoint and requests text + image output.
+- API key is provided per request and is not written to disk by the local server.
+
+See [Gemini image generation docs](https://ai.google.dev/gemini-api/docs/image-generation) and [pricing](https://ai.google.dev/gemini-api/docs/pricing). API billing is separate from a Gemini consumer subscription.
