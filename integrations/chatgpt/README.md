@@ -1,11 +1,10 @@
-# Using SAG VCE with ChatGPT
+# OpenAI image generation
 
-1. Open the project visual bible and the scene JSON.
-2. Run the prompt builder, or ask ChatGPT to follow `AGENTS.md` and use the visual bible as the source of truth.
-3. Provide/attach the approved character and environment reference images in the ChatGPT image-generation conversation.
-4. Paste the generated scene prompt and request the scene.
-5. Compare the output with the approved references before accepting it.
+The local web app uses the OpenAI Images API `/v1/images/edits` endpoint and supplies selected approved character and environment images as image inputs alongside the compiled scene prompt.
 
-**Important:** A GitHub connection gives ChatGPT access to repository files; it does not automatically upload image assets to an image-generation request or guarantee that a model will preserve every pixel-level detail. Attach references in the image conversation itself.
+- Default model: `gpt-image-2.6-flare`
+- Other models are selectable in API settings.
+- API key is supplied per request and is not written to disk by the local server.
+- This is OpenAI API image generation, not the ChatGPT website UI or a ChatGPT subscription. API billing is separate.
 
-Use the current ChatGPT image-generation interface and its available image-reference/editing features. API automation is a separate integration and must be implemented against the current OpenAI API documentation and account access.
+See the [image generation guide](https://developers.openai.com/api/docs/guides/image-generation) and [image edit API reference](https://developers.openai.com/api/reference/resources/images/methods/edit).
