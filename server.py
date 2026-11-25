@@ -12,7 +12,7 @@ MAX_BODY = 35 * 1024 * 1024
 
 class Handler(SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, directory=str(ROOT), **kwargs)
+        super().__init__(*args, directory=str(APP), **kwargs)
 
     def end_headers(self):
         self.send_header("Cache-Control", "no-store")
@@ -120,7 +120,7 @@ if __name__ == "__main__":
     from threading import Timer
     port = int(os.environ.get("SAG_VCE_PORT", "8765"))
     server = ThreadingHTTPServer(("127.0.0.1", port), Handler)
-    print(f"SAG VCE running at http://127.0.0.1:{port}/app/")
+    print(f"SAG VCE running at http://127.0.0.1:{port}/")
     print("Local only. Keep this terminal open. Press Ctrl+C to stop.")
     Timer(1, lambda: webbrowser.open(f"http://127.0.0.1:{port}/app/")).start()
     try: server.serve_forever()
