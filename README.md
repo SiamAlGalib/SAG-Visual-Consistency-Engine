@@ -12,7 +12,7 @@ Requires Python 3.10+; no extra packages are needed.
 
 1. Download or clone this repository.
 2. Double-click `run-local.bat`, or open a terminal in the project folder and run `python server.py`.
-3. Open `http://127.0.0.1:8765/app/`.
+3. Open `http://127.0.0.1:8765/`.
 4. In **API settings**, add your Gemini or OpenAI API key.
 5. In **Visual library**, save character and background references.
 6. In **Generate image**, select their names, describe the scene, and generate.
