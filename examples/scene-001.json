@@ -1,0 +1,21 @@
+{
+  "scene_id": "scene-001",
+  "title": "Example establishing shot",
+  "story_beat": "Describe what happens in this scene.",
+  "shot": {
+    "framing": "wide establishing shot",
+    "camera_angle": "eye level",
+    "composition": "Describe subject placement and negative space"
+  },
+  "time_and_lighting": "Late afternoon, warm natural light",
+  "characters": [],
+  "environment_id": "childhood-home-garden",
+  "continuity_from_previous": "Describe what must remain unchanged from the previous scene.",
+  "allowed_changes": [],
+  "must_not_change": [
+    "Character identity",
+    "Approved art direction",
+    "Established environment layout"
+  ],
+  "additional_prompt": ""
+}
