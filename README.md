@@ -17,7 +17,7 @@ Requires Python 3.10+.
 ```bash
 python -m venv .venv
 # Windows:
-.venv\\Scripts\\activate
+.venv\Scripts\activate
 # macOS/Linux:
 source .venv/bin/activate
 pip install -e .
