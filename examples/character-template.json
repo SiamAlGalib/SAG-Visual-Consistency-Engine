@@ -1,0 +1,23 @@
+{
+  "id": "character-id",
+  "name": "Character Name",
+  "identity_lock": "Describe stable visible identity: apparent age, face shape, skin tone, eye shape, hairstyle and color, body proportions, and distinguishing features.",
+  "wardrobe_lock": "Describe the approved default outfit, garment colors, materials, and accessories.",
+  "color_keys": {
+    "hair": "#000000",
+    "top": "#000000",
+    "bottom": "#000000",
+    "shoes": "#000000"
+  },
+  "reference_images": [
+    "references/character-turnaround.png",
+    "references/character-expressions.png"
+  ],
+  "do_not_change": [
+    "Face shape",
+    "Hairstyle and hair color",
+    "Body proportions",
+    "Core wardrobe colors"
+  ],
+  "approved_version": "1.0"
+}
