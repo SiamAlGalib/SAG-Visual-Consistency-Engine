@@ -1,0 +1,40 @@
+{
+  "project": {
+    "name": "Untitled Story",
+    "version": "1.0",
+    "aspect_ratio": "16:9",
+    "language": "en"
+  },
+  "art_direction": {
+    "style_name": "Cinematic hand-drawn 2D Western animation",
+    "linework": "Clean, precise dark-brown outlines",
+    "shading": "Two-tone cel shading with subtle ambient gradients",
+    "texture": "Controlled, subtle texture; no photorealism",
+    "lighting_rules": [
+      "Keep lighting motivated by the scene and time of day",
+      "Do not change the established color identity of characters"
+    ],
+    "global_negative_rules": [
+      "Do not redesign established characters",
+      "Do not randomly change clothing, hairstyle, age, or body proportions",
+      "Do not shift the established palette or rendering style",
+      "Do not add text, captions, logos, or watermarks unless requested"
+    ]
+  },
+  "palette": {
+    "description": "Replace these sample colors with colors sampled from approved reference artwork.",
+    "colors": [
+      {"name": "outline", "hex": "#1A1512", "usage": "Primary outlines"},
+      {"name": "warm-highlight", "hex": "#F2C98B", "usage": "Example warm highlights"},
+      {"name": "cool-shadow", "hex": "#526078", "usage": "Example cool shadows"}
+    ]
+  },
+  "characters": [],
+  "environments": [],
+  "continuity_rules": [
+    "Use approved reference images for every recurring character visible in a scene.",
+    "Preserve each character's immutable identity traits across camera angles and expressions.",
+    "Preserve environment layout unless the story explicitly changes it.",
+    "Only change clothing or carried objects when the scene manifest explicitly says so."
+  ]
+}
