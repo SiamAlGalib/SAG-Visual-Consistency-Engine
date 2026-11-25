@@ -8,24 +8,24 @@ You are helping maintain SAG Visual Consistency Engine (SAG VCE).
 - Never invent missing character details. Flag missing information and ask for an approved reference or explicit decision.
 - Do not silently modify approved reference files or visual-bible entries.
 - Keep provider-specific behavior isolated from the provider-neutral core.
+- The local browser library is the user's source of truth for saved assets; never upload its contents to GitHub.
 
 ## Image prompt workflow
-1. Read the project's visual bible.
-2. Read the scene manifest.
-3. Identify every referenced character and environment.
-4. Include their immutable traits and approved reference image paths in the prompt.
-5. Tell the user to attach the actual reference images in the target image-generation interface. A local path in text is not an uploaded image.
-6. Preserve the requested shot, action, and composition without redesigning the established visual identity.
-7. If a scene intentionally changes clothing, age, hairstyle, season, or location, require that change to be explicit in the scene manifest.
+1. Retrieve the selected saved character and environment records.
+2. Include immutable traits and actual approved reference image bytes in every provider request.
+3. Treat references as identity anchors, not loose inspiration.
+4. Preserve requested shot, action, and composition without redesigning established visual identity.
+5. Require explicit instructions for intentional changes to clothing, age, hairstyle, season, or location.
 
 ## Color discipline
 - Use stored HEX values and named usage from the visual bible.
 - Do not casually reinterpret palette descriptions.
-- Explain that prompt-level HEX instructions are guidance, not a guarantee of exact rendered pixels.
+- HEX values guide the model but do not guarantee exact rendered pixels.
 - For exact color matching, recommend image editing or deterministic post-processing.
 
 ## Engineering
 - Keep Python dependencies minimal.
 - Add tests for core validation and prompt generation.
 - Never commit API keys, credentials, or private reference images.
+- Keep the local server bound to 127.0.0.1; do not expose it to the public internet.
 - Update documentation when behavior changes.
